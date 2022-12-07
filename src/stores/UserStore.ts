@@ -1,17 +1,20 @@
 import { defineStore } from 'pinia'
+import { ref } from 'vue'
 
-export const useUserStore = defineStore('UserStore', {
-
-  state: () => ({
-    firstName: 'EXAMPLE NAME',
-    lastName: 'EXAMPLE NAME'
-  }),
-  actions: {
-    updateFirstName (value: string) {
-      this.firstName = value
-    },
-    updateLastName (value: string) {
-      this.LastName = value
-    }
+export const useUserStore = defineStore('UserStore', () => {
+    
+  const firstName = ref('EXAMPLE NAME')
+  const lastName = ref('EXAMPLE NAME')
+  const updateFirstName = (value: string) => {
+      firstName.value = value
+  }
+  const updateLastName = (value: string) => {
+    lastName.value = value
+  }
+  return {
+    firstName,
+    lastName,
+    updateFirstName,
+    updateLastName
   }
 })
